@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+
+{% block contenu %}
+
+
+<h1>Vous etes connecte como administrateur</h1>
+    <h2>Liste de Clients</h2>
+
+<br>
+
+ <h2>Liste des clients</h2>
+<table border="1">
+    <tr>
+        <th>Nom</th>
+        <th>Prénom</th>
+        <th>Courriel</th>
+    </tr>
+    {% for client in clients %}
+    <tr>
+        <td>{{ client.nom }}</td>
+        <td>{{ client.prenom }}</td>
+        <td>{{ client.courriel }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<h2>Liste de Films</h2>
+<ul>
+    {% for film in films %}
+    <li>{{ film.nom }}</li>
+    {% endfor %}
+</ul>
+
+
+<!--Boutons creation clients,modification et suppresion -->
+
+
+
+<h2>Actions</h2>
+
+ <button onclick="crearClient()">Creer nouveau Client</button>
+<button onclick="modifierClient()">Modifier Client</button>
+<button onclick="supprimerClient()">Supprimer Client</button>
+<br>
+
+    <a href="/logout">Déconnexion</a>
+<br>
+
+
+
+{% endblock %}

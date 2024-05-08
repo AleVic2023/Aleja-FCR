@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %} Notre site Web {% endblock %}</title>
+</head>
+<body>
+
+    <header>
+        {% block h1 %} <h1 style='color:blue';>FCR FILMS</h1>{% endblock %}
+    </header>
+
+
+    <main>
+        {% block contenu %}
+        Contenu par defaut
+        {% endblock %}
+    </main>
+<br>
+
+</body>
+</html>
