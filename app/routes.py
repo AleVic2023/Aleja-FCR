@@ -58,5 +58,24 @@ def lecture():
     return render_template('lecture.html', clients=clients, films=films)
 
 
+@app.route('/logout')
+def logout():
+    return render_template('login.html')
+
+
+#Route et definition pour la cr/ation de clients
+
+@app.route('/creer_client',methods=['GET','POST'])
+def creer_client():
+    if request.method == 'POST':
+        nom = request.form['nom']
+        prenom = request.form['prenom']
+        courriel = request.form['courriel']
+        client = {'nom': nom, 'prenom':prenom, 'courriel': courriel}
+        clients.append(client)
+        return redirect('/admin')
+    else:
+            return render_template('/creer_client.html')
+
 if __name__ == "__main__":
     app.run(debug=True)
