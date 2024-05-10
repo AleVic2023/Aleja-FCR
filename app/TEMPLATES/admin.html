@@ -4,7 +4,7 @@
 {% block contenu %}
 
 
-<h1>Vous etes connecte como administrateur</h1>
+<h1>Vous etes connecte comme administrateur</h1>
     <h2>Liste de Clients</h2>
 
 <br>
@@ -24,26 +24,65 @@
     </tr>
     {% endfor %}
 </table>
-
-<h2>Liste de Films</h2>
-<ul>
-    {% for film in films %}
-    <li>{{ film.nom }}</li>
-    {% endfor %}
-</ul>
-
-
-<!--Boutons creation clients,modification et suppresion -->
-
-
+<br>
 
 <h2>Actions</h2>
 
- <button onclick="crearClient()">Creer nouveau Client</button>
-<button onclick="modifierClient()">Modifier Client</button>
-<button onclick="supprimerClient()">Supprimer Client</button>
+<a href="/creer_client">Creer nouveau Client</a>
+
+<br>
+<a href="/modifier_client">Modifier Client</a>
+
+<br>
+<a href="/supprimer_client">Supprimer Client</a>
+
+
 <br>
 
+<h2>Liste de Films</h2>
+
+<table border="1">
+    <tr>
+        <th>Nom</th>
+        <th>Duree</th>
+        <th>Categorie</th>
+    </tr>
+    {% for film in films %}
+    <tr>
+        <td class="film" data-actors="{{ ', '.join(film.acteurs) }}">{{ film.nom }}</td>
+        <td>{{ film.duree }}</td>
+        <td>{{ film.categorie }}</td>
+
+
+    </tr>
+
+    {% endfor %}
+</table>
+
+<!--Fonctionne pour  afficher les acteurs des films quand la personne met la souris sur le nom film-->
+
+<script>
+
+    var filmElements = document.querySelectorAll('.film');
+    filmElements.forEach(function(element) {
+        element.addEventListener('mouseover', function(event) {
+            var actors = event.target.getAttribute('data-actors');
+            event.target.setAttribute('title', 'Acteurs: ' + actors);
+        });
+    });
+</script>
+
+
+<!--Bouton de deconnexion -->
+
+<br>
+
+    <a href="/logout">Déconnexion</a>
+<br>
+
+
+
+{% endblock %}
     <a href="/logout">Déconnexion</a>
 <br>
 
